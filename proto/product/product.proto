@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package zwap.product.v1;
+
+option java_package = "com.zwap.proto.product.v1";
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+
+// Product proto message
+message ProductBase {
+  string id = 1;
+  string user_id = 2;
+  string title = 3;
+  string description = 4;
+  string image_path = 5;
+  int32 price = 6; // should be between 0 and 1,000,000 (validate in app logic)
+  google.protobuf.Timestamp created_at = 8;
+  string city = 9;
+  string location_name = 10;
+  string address = 11;
+  string place_id = 12;
+  GeoData geo_data = 13;
+}
+
+// GeoData message containing geographic coordinates and optional accuracy
+message GeoData {
+  double lat = 1;
+  double lon = 2;
+}
