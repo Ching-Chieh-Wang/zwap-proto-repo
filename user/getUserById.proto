@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.zwap.user;
+
+option java_package = "com.zwap.user_service.proto";
+option java_multiple_files = true;
+option java_outer_classname = "GetUserByIdProto";
+
+import "buf/validate/validate.proto";
+
+message GetUserByIdRequest {
+  string id = 1 [(buf.validate.field).string.min_len = 1];
+}
+
+message GetUserByIdResponse {
+  string displayName = 1[(buf.validate.field).string.min_len = 1];
+  string photoUrl = 2[(buf.validate.field).string.min_len = 1];
+}
+
+// The service definition
+service UserService {
+  rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);
+}
