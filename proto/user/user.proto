@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package com.zwap.user_service.proto;
+
+// Service definition
+service UserService {
+  // Get user details by ID
+  rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse);
+}
+
+// Request message
+message GetUserByIdRequest {
+  string id = 1; // Firebase UID
+}
+
+// Response message
+message GetUserByIdResponse {
+  string displayName = 1;
+  string photoUrl = 2;
+}
